@@ -1,0 +1,88 @@
+﻿@model MePague.Models.Debtor
+
+@{
+    ViewBag.Title = "Charge";
+}
+
+
+@using (Html.BeginForm("Charge", "Debt", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div>
+            <h1>Me pague o que deve</h1>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Digite seu nome" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextArea("message", null, new { @class = "form-control", placeholder = "Escreva uma msagem para o(a) caloteiro(a)" })
+                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Totaldebt, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Totaldebt, new { htmlAttributes = new { @class = "form-control", placeholder = "Qual o valor do golpe?" } })
+                @Html.ValidationMessageFor(model => model.Totaldebt, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Para qual email deseja enviar?" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Enviar" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<style type="text/css">
+    h1 {
+        font-family: BerlinSans;
+        font-size: 4.4vw;
+        color: #1fc259;
+        text-align: right;
+    }
+
+    .subtitle {
+        text-align: center;
+        font-size: 15px;
+        text-align: right;
+    }
+
+    TextArea {
+        width: 250px;
+        height: 150px;
+        padding-right: 100%;
+        resize: none;
+    }
+
+    td {
+        width: 210px;
+    }
+</style>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
